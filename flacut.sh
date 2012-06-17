@@ -17,7 +17,7 @@ fi
 
 # Cortamos el archivo flac en múltiples tracks según los índices del archivo cue.
 echo
-echo "Dividiendo fichero flack en multiples tracks"
+echo "Dividiendo fichero flac en multiples tracks"
 echo
 cuebreakpoints "$FCUE" | shnsplit -o flac "$FFLAC"
 
