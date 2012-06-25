@@ -3,10 +3,12 @@ flacut
 
 Automated system for cutting up and tagging ".flac" files using the associated ".cue" files
 
+
 Dependencies
 ------------
   * **cuetools**
   * **lltag**
+
 
 Instalation
 -----------
