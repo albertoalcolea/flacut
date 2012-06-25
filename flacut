@@ -8,6 +8,7 @@
 # associated ".cue" files
 #
 # Autor: Alberto Alcolea
+#        http://albertoalcolea.com
 ######################################################################
 
 
@@ -22,8 +23,8 @@ need_dependency() {
 }
 
 
-# Comprobamos que existen las dependencias necesarias
-test_dependencies() {
+# Check exist of the required dependencies
+check_dependencies() {
     # cuetools
     which cuebreakpoints > /dev/null
     if [ ! `echo $?` = 0 ] ; then
@@ -44,11 +45,12 @@ test_dependencies() {
 
 
 
+#########
 # MAIN
 #########
 
 
-# Recogemos los argumentos con los que ha sido llamado
+# Collect the arguments that the application has been called
 if [ "$1" = "--help" ] ; then
     usage $0
     exit 0
@@ -63,24 +65,26 @@ else
 fi
 
 
-test_dependencies
+check_dependencies
 
 
-# Cortamos el archivo flac en múltiples tracks según los índices del archivo cue.
+# Cut the big flac file into multiple tracks, according to the index of the cue file
 echo
-echo "Dividiendo fichero flac en multiples tracks"
+echo "Dividing flac file into multiple tracks"
 echo
 cuebreakpoints "$FCUE" | shnsplit -o flac "$FFLAC"
 
-# Aplicamos las etiquetas tag a los archivos generados.
+
+# Apply the tags to the generated files
 echo
-echo "Aplicando tags a los tracks"
+echo "Applying tags to tracks"
 echo
 cuetag "$FCUE" split-track*.flac
 
-# Renombramos los arcivos
+
+# Rename the files according to the tags
 echo
-echo "Renombrando tracks segun los tags asociados"
+echo "Renaming tracks according to the associated tags"
 echo
 lltag --yes --no-tagging --rename '%n - %t' `ls split-track*.flac`
 
