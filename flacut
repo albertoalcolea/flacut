@@ -1,16 +1,61 @@
 #! /bin/sh
 
-USAGE="Usage: $0 FLAC_FILE CUE_FILE"
+######################################################################
+# FLACUT
+# ------
+#
+# Automated system for cutting up and tagging ".flac" files using the 
+# associated ".cue" files
+#
+# Autor: Alberto Alcolea
+######################################################################
+
+
+usage() {
+    echo "Usage: $1 FLAC_FILE CUE_FILE"
+}
+
+
+need_dependency() {
+    echo "You need to install '$1' to run this application"
+    exit 2
+}
+
+
+# Comprobamos que existen las dependencias necesarias
+test_dependencies() {
+    # cuetools
+    which cuebreakpoints > /dev/null
+    if [ ! `echo $?` = 0 ] ; then
+        need_dependency "cuetools"
+    fi
+
+    which cuetag > /dev/null
+    if [ ! `echo $?` = 0 ] ; then
+        need_dependency "cuetools"
+    fi
+
+    # lltag
+    which lltag > /dev/null
+    if [ ! `echo $?` = 0 ] ; then
+        need_dependency "lltag"
+    fi
+}
+
+
+
+# MAIN
+#########
 
 
 # Recogemos los argumentos con los que ha sido llamado
 if [ "$1" = "--help" ] ; then
-    echo $USAGE
+    usage $0
     exit 0
 fi
 
 if [ $# != 2 ] ; then
-    echo $USAGE
+    usage $0
     exit 1
 else
     FFLAC="$1"
@@ -18,26 +63,7 @@ else
 fi
 
 
-
-# Comprobamos que existen las dependencias necesarias
-which cuebreakpoints > /dev/null
-if [ ! $(echo $?) = 0 ] ; then
-    echo "You need to install 'cuetools' to run this application"
-    exit 2
-fi
-
-which cuetag > /dev/null
-if [ ! $(echo $?) = 0 ] ; then
-    echo "You need to install 'cuetools' to run this application"
-    exit 2
-fi
-
-which lltag > /dev/null
-if [ ! $(echo $?) = 0 ] ; then
-    echo "You need to install 'lltag' to run this application"
-    exit 2
-fi
-
+test_dependencies
 
 
 # Cortamos el archivo flac en múltiples tracks según los índices del archivo cue.
@@ -57,4 +83,5 @@ echo
 echo "Renombrando tracks segun los tags asociados"
 echo
 lltag --yes --no-tagging --rename '%n - %t' `ls split-track*.flac`
+
 exit 0
