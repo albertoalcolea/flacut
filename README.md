@@ -18,15 +18,16 @@ $PATH environment variable)
 
 Usage
 -----
-  flacut [options] file_flac file_cue
+**flacut [OPTIONS] FLAC_FILE CUE_FILE**
 
-  Options:
-  * -r, --rename    Rename format (like lltag format)
-  * -h, --help      Show help
+Options:
+  -r, --rename    Rename format (like lltag format)
+  -h, --help      Show help
 
   Default format: "%n - %t". See lltag help for more information.
 
-  Examples:
-  * flacut bigflac.flac cueinfo.cue
-  * flacut -r "%n - %t" bigflac.flac cueinfo.cue
-        Will rename the multiple flac files with the number and title of track.
+Examples:
+  flacut bigflac.flac cueinfo.cue
+  
+  flacut -r "%n - %t" bigflac.flac cueinfo.cue
+      Will rename the multiple flac files with the number and title of track.
