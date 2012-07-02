@@ -18,7 +18,7 @@ $PATH environment variable)
 
 Usage
 -----
-    **flacut [options] flac_file cue_file**
+**flacut [options] flac_file cue_file**
 
 
 **Options:**
