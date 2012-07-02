@@ -13,7 +13,20 @@
 
 
 usage() {
-    echo "Usage: $1 FLAC_FILE CUE_FILE"
+    echo "Usage: $1 [OPTIONS]  FLAC_FILE CUE_FILE"
+    echo
+    echo "Options:"
+    echo "  -r, --rename    rename format (like lltag format)"
+    echo "  -h, --help      show this help"
+    echo
+    echo "  FLAC_FILE (file .flac). CUE_FILE (file .cue)"
+    echo "  Default format: \"%n - %t\". See lltag help for more information."
+    echo
+    echo "Examples:"
+    echo "  flacut bigflac.flac cueinfo.cue"
+    echo
+    echo "  flacut -r \"%n - %t\" bigflac.flac cueinfo.cue"
+    echo "      Will rename the multiple flac files with number and title of track."
 }
 
 
@@ -48,13 +61,17 @@ check_dependencies() {
 #########
 # MAIN
 #########
-
+RENAME="%n - %t"
 
 # Collect the arguments that the application has been called
-if [ "$1" = "--help" ] ; then
-    usage $0
-    exit 0
-fi
+for i in $*
+do
+	case $i in
+        -r|--rename) RENAME=$2; shift; shift;;
+        -h|--help) usage $0; exit 0; shift;;
+        *) ;;
+	esac
+done
 
 if [ $# != 2 ] ; then
     usage $0
