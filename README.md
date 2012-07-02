@@ -21,13 +21,13 @@ Usage
 **flacut [options] flac_file cue_file**
 
 
-Options:
+**Options:**
   * -r, --rename    Rename format (like lltag format)
   * -h, --help      Show help
 
   Default format: "%n - %t". See lltag help for more information.
 
-Examples:
+**Examples:**
   * flacut bigflac.flac cueinfo.cue
   
   * flacut -r "%n - %t" bigflac.flac cueinfo.cue
