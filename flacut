@@ -17,6 +17,7 @@ usage() {
     echo
     echo "Options:"
     echo "  -r, --rename    rename format (like lltag format)"
+    echo "  -d, --delete     delete the origin files (.flac and .cue) after cutting"
     echo "  -h, --help      show this help"
     echo
     echo "  FLAC_FILE (file .flac). CUE_FILE (file .cue)"
@@ -61,13 +62,17 @@ check_dependencies() {
 #########
 # MAIN
 #########
+
+# Options
 RENAME="%n - %t"
+DELETE=0
 
 # Collect the arguments that the application has been called
 for i in $*
 do
 	case $i in
         -r|--rename) RENAME=$2; shift; shift;;
+        -d|--delete) DELETE=1; shift;;
         -h|--help) usage $0; exit 0; shift;;
         *) ;;
 	esac
@@ -104,5 +109,11 @@ echo
 echo "Renaming tracks according to the associated tags"
 echo
 lltag --yes --no-tagging --rename '%n - %t' `ls split-track*.flac`
+
+
+# if necessary, delete the origin files
+if [ $DELETE = 1 ]; then
+    rm FFLAC FCUE
+fi
 
 exit 0

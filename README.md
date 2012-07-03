@@ -23,6 +23,7 @@ Usage
 
 **Options:**
   * -r, --rename    Rename format (like lltag format)
+  * -d, --delete    Delete the origin files (.flac and .cue) after cutting
   * -h, --help      Show help
 
   Default format: "%n - %t". See lltag help for more information.
