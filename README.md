@@ -12,13 +12,13 @@ Dependencies
 
 Instalation
 -----------
-Place flacut in `/usr/local/bin` preferred or in `/usr/ bin`  (or any other existing directory in your 
+Place flacut in `/usr/local/bin`, preferred, or in `/usr/ bin` (or any other existing directory in your 
 $PATH environment variable)
 
 
 Usage
 -----
-**flacut [options] flac_file cue_file**
+`flacut [options] flac_file cue_file`
 
 
 ### Options
@@ -32,6 +32,8 @@ Usage
 
     flacut bigflac.flac cueinfo.cue
   
+The basic use.
+  
     flacut -r "%n - %t" bigflac.flac cueinfo.cue
-
-     (Will rename the multiple flac files with the number and title of track.)
+    
+Will rename the multiple flac files with the number and title of track.
