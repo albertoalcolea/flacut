@@ -23,9 +23,9 @@ Usage
 
 
 ### Options
-  * `-r`, `--rename`  --  rename format (like lltag format)
-  * `-d`, `--delete`  --  delete the origin files (.flac and .cue) after cutting
-  * `-h`, `--help`  --  show help
+  * `-r`, `--rename` - rename format (like lltag format)
+  * `-d`, `--delete` - delete the origin files (.flac and .cue) after cutting
+  * `-h`, `--help` - show help
 
   Default format: "%n - %t". See lltag help for more information.
 
