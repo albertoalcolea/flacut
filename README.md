@@ -18,13 +18,14 @@ $PATH environment variable)
 
 Usage
 -----
-`flacut [options] flac_file cue_file`
+
+    flacut [options] flac_file cue_file
 
 
 ### Options
-  * -r, --rename    Rename format (like lltag format)
-  * -d, --delete    Delete the origin files (.flac and .cue) after cutting
-  * -h, --help      Show help
+  * `-r`, `--rename`  --  rename format (like lltag format)
+  * `-d`, `--delete`  --  delete the origin files (.flac and .cue) after cutting
+  * `-h`, `--help`  --  show help
 
   Default format: "%n - %t". See lltag help for more information.
 
