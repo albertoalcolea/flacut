@@ -32,4 +32,4 @@ Usage
   
   * flacut -r "%n - %t" bigflac.flac cueinfo.cue
 
-     Will rename the multiple flac files with the number and title of track.
+     (Will rename the multiple flac files with the number and title of track.)
