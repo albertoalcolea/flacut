@@ -70,12 +70,12 @@ DELETE=0
 # Collect the arguments that the application has been called
 for i in $*
 do
-	case $i in
+    case $i in
         -r|--rename) RENAME=$2; shift; shift;;
         -d|--delete) DELETE=1; shift;;
         -h|--help) usage $0; exit 0; shift;;
         *) ;;
-	esac
+    esac
 done
 
 if [ $# != 2 ] ; then
