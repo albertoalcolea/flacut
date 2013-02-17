@@ -12,7 +12,7 @@ Dependencies
 
 Instalation
 -----------
-Place flacut in `/usr/local/bin`, preferred, or in `/usr/ bin` (or any other existing directory in your 
+Place flacut in `/usr/local/bin`, preferred, or in `/usr/bin` (or any other existing directory in your 
 $PATH environment variable)
 
 
